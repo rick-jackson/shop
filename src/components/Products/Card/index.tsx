@@ -1,16 +1,12 @@
-import {
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  Button,
-  Typography,
-} from "@mui/material";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import Link from "next/link";
-import { addShopping } from "@store/actions/shopping";
+import { Grid, CardMedia, Button, Typography } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+
 import { useAppDispatch, useAppSelector } from "@common/hooks/redux";
+import { addShopping } from "@store/actions/shopping";
+import Link from "@components/Link";
+
+import * as Styled from "./Card.styled";
 
 type ProductCardProps = {} & any;
 
@@ -27,14 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <Grid item xs={2} sm={4} md={4} key={id}>
-      <Card
-        sx={{
-          maxWidth: 385,
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <Styled.Card>
         <CardMedia
           sx={{ objectFit: "contain", padding: "12px" }}
           component="img"
@@ -42,11 +31,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
           image={image}
           alt={title}
         />
-        <CardContent
-          sx={{ flex: 1, display: "flex", flexDirection: "column", gap: "8px" }}
-        >
-          <Link href={`/${category}/${id}`}>{title}</Link>
-          <span>{category}</span>
+        <Styled.Content>
+          <Link style={{ fontSize: "20px" }} href={`/${category}/${id}`}>
+            {title}
+          </Link>
+          <Link href={`/${category}`}>{category}</Link>
           <Typography
             variant="h5"
             sx={{ textAlign: "right", marginTop: "auto" }}
@@ -72,8 +61,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
               </>
             )}
           </Button>
-        </CardContent>
-      </Card>
+        </Styled.Content>
+      </Styled.Card>
     </Grid>
   );
 };

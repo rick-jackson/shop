@@ -6,6 +6,7 @@ export const Search = MuiStyled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
+  height: "48px",
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },

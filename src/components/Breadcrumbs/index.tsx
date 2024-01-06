@@ -1,8 +1,9 @@
-import React from "react";
-import MuiBreadcrumbs from "@mui/material/Breadcrumbs";
 import Stack from "@mui/material/Stack";
-import Link from "next/link";
 import HomeIcon from "@mui/icons-material/Home";
+
+import Link from "@components/Link";
+
+import * as Styled from "./Breadcrumbs.styled";
 
 type Breadcrumbs = {
   links: string[];
@@ -12,12 +13,16 @@ const Breadcrumbs: React.FC<Breadcrumbs> = ({ links }) => {
   return (
     <Stack
       spacing={2}
-      sx={{ borderBottom: "1px solid grey", marginBottom: "12px" }}
+      sx={{
+        borderBottom: "1px solid grey",
+        marginBottom: "24px",
+      }}
     >
-      <MuiBreadcrumbs separator="›" aria-label="breadcrumb">
+      <Styled.Breadcrumbs separator="›" aria-label="breadcrumb">
         <Link href="/">
           <HomeIcon />
         </Link>
+
         {links.map((link, index) => (
           <div key={link}>
             {index + 1 !== links.length ? (
@@ -27,7 +32,7 @@ const Breadcrumbs: React.FC<Breadcrumbs> = ({ links }) => {
             )}
           </div>
         ))}
-      </MuiBreadcrumbs>
+      </Styled.Breadcrumbs>
     </Stack>
   );
 };

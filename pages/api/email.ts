@@ -42,7 +42,7 @@ const getHtml = (body) => {
                       style="object-fit: contain;"
                     />
                   </td>
-                  <td style="border: 1px solid black; padding: 8px;"><a href=/${product.category}/${product.id} traget=_blank>${product.title}</a></td>
+                  <td style="border: 1px solid black; padding: 8px;"><a href=https://shop-jet-xi.vercel.app/${product.category}/${product.id} traget=_blank>${product.title}</a></td>
                   <td style="border: 1px solid black; padding: 8px;">${product.count}</td>
                   <td style="border: 1px solid black; padding: 8px;">$ ${product.price}</td>
                 </tr>

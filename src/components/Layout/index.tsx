@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box, useMediaQuery } from "@mui/material";
 
 import Header from "@components/Header";

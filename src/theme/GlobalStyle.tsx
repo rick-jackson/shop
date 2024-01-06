@@ -64,12 +64,7 @@ const GlobalStyle = createGlobalStyle`
     overflow: auto;
   }
 
-  .MuiButtonBase-root{
-    text-transform: none;
-    border-radius: 10px;
-    font-size: 16px;
-    box-shadow: none;
-  }
+ 
 `;
 
 export default GlobalStyle;

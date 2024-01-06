@@ -1,10 +1,11 @@
-import Counter from "@components/UI/Counter";
-import { IconButton } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
+import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useAppDispatch } from "@common/hooks/redux";
+
 import { deleteShopping, incrementShopping } from "@store/actions/shopping";
+import { useAppDispatch } from "@common/hooks/redux";
+import Counter from "@components/UI/Counter";
+import Link from "@components/Link";
 
 import * as Styled from "./Card.styled";
 

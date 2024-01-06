@@ -1,12 +1,13 @@
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
+import SearchIcon from "@mui/icons-material/Search";
 import { createFilterOptions } from "@mui/material/Autocomplete";
 
+import Link from "@components/Link";
+
 import * as Styled from "./Search.styled";
-import Link from "next/link";
-import Image from "next/image";
 
 const filterOptions = createFilterOptions({
   matchFrom: "start",

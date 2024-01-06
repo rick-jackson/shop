@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({
   }, []);
 
   return (
-    <AppBar sx={{ zIndex: 9999999 }} position="static">
+    <AppBar sx={{ zIndex: 1300 }} position="static">
       <Toolbar>
         {!hiddenSidebar && (
           <IconButton
@@ -63,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: "flex" }}>
           <Tooltip title={<Basket />} enterDelay={700} placement="bottom-start">
-            <IconButton size="large" color="inherit">
+            <IconButton size="large" color="inherit" sx={{ height: "48px" }}>
               <Badge badgeContent={shoppings.length} color="error">
                 <Link href="/basket" style={{ color: "#fff" }}>
                   <ShoppingCartOutlinedIcon />

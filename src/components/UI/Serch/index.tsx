@@ -5,13 +5,14 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import { createFilterOptions } from "@mui/material/Autocomplete";
 
+import type { Product } from "src/types/entities/product";
 import Link from "@components/Link";
 
 import * as Styled from "./Search.styled";
 
 const filterOptions = createFilterOptions({
   matchFrom: "start",
-  stringify: (option: any) => option.title,
+  stringify: (option: Product) => option.title,
 });
 
 const Search: React.FC = () => {
@@ -31,7 +32,7 @@ const Search: React.FC = () => {
       </Styled.SearchIconWrapper>
       <Styled.InputBase
         options={products}
-        getOptionLabel={(option: any) => option.title}
+        getOptionLabel={(option: Product) => option.title}
         filterOptions={filterOptions}
         sx={{ maxWidth: 300 }}
         renderInput={(params) => <TextField {...params} />}

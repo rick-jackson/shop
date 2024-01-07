@@ -1,34 +1,29 @@
-import { GetServerSideProps, NextPage } from "next";
-import axios from "axios";
+import { type GetServerSideProps, NextPage } from "next";
 import { Pagination } from "@mui/material";
-import Layout from "@components/Layout";
-import { useState } from "react";
+
+import type { Product } from "src/types/entities/product";
+import usePagination from "@common/hooks/usePagination";
+import { getCategories } from "@gateways/getCategories";
+import { getAllProducts } from "@gateways/getProducts";
 import ProductsList from "@components/Products/List";
+import Layout from "@components/Layout";
 
 type HomePageProps = {
-  products: any;
+  products: Product[];
+  categories: string[];
 };
 
-const HomePage: NextPage<HomePageProps> = ({ products }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  const productsToDisplay = products.slice(startIndex, endIndex);
-
-  const handlePageChange = (_, newPage) => {
-    setCurrentPage(newPage);
-  };
+const HomePage: NextPage<HomePageProps> = ({ products, categories }) => {
+  const { productsToDisplay, handlePageChange, count, currentPage } =
+    usePagination(products);
 
   return (
-    <Layout>
+    <Layout categories={categories}>
       <>
         <ProductsList products={productsToDisplay} />
         <Pagination
           sx={{ margin: "auto" }}
-          count={Math.ceil(products.length / itemsPerPage)}
+          count={count}
           page={currentPage}
           variant="outlined"
           shape="rounded"
@@ -40,10 +35,11 @@ const HomePage: NextPage<HomePageProps> = ({ products }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await axios.get("https://fakestoreapi.com/products");
+  const products = await getAllProducts();
+  const categories = await getCategories();
 
   return {
-    props: { products: data },
+    props: { products, categories },
   };
 };
 

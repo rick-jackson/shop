@@ -1,21 +1,19 @@
 import { useState } from "react";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box } from "@mui/material";
 
 import Header from "@components/Header";
-import Sidebar from "@components/Sidebar";
+
 import Breadcrumbs from "@components/Breadcrumbs";
-import theme from "@theme/index";
+import Categories from "@components/Categories";
 
 type LayoutProps = {
   children: JSX.Element;
-  hiddenSidebar?: boolean;
   links?: string[];
+  categories?: string[];
 };
 
-const Layout: React.FC<LayoutProps> = ({ children, hiddenSidebar, links }) => {
-  const matches = useMediaQuery(theme.breakpoints.up("md"));
-
-  const [isOpenCategories, setOpenCategories] = useState(true);
+const Layout: React.FC<LayoutProps> = ({ children, categories, links }) => {
+  const [isOpenCategories, setOpenCategories] = useState(false);
 
   const handleToggleCategoies = () => {
     setOpenCategories(!isOpenCategories);
@@ -25,12 +23,14 @@ const Layout: React.FC<LayoutProps> = ({ children, hiddenSidebar, links }) => {
     <>
       <Header
         onToggleCategories={handleToggleCategoies}
-        hiddenSidebar={hiddenSidebar}
+        isShowCategories={!!categories?.length}
       />
       <Box display="flex" flex={1}>
-        {!hiddenSidebar && (
-          <Sidebar
-            isOpenCategories={matches ? isOpenCategories : !isOpenCategories}
+        {!!categories?.length && (
+          <Categories
+            categories={categories}
+            isOpenCategories={isOpenCategories}
+            onToggleCategoies={handleToggleCategoies}
           />
         )}
         <Box

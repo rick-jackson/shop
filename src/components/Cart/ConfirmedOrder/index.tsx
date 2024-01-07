@@ -1,6 +1,10 @@
+import { Dispatch, SetStateAction, useState } from "react";
+import { Box, Button, CircularProgress, Modal, TextField } from "@mui/material";
+
+import type { Product } from "src/types/entities/product";
+import { clearProductsCart } from "@store/actions/productsCart";
+import { useAppDispatch } from "@common/hooks/redux";
 import { sendEmail } from "@gateways/sendEmail";
-import { Box, Button, Modal, TextField } from "@mui/material";
-import { useState } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -14,12 +18,18 @@ const style = {
 };
 
 type ConfirmedOrderProps = {
-  products: any;
+  products: Product[];
+  onSubmit: Dispatch<SetStateAction<boolean>>;
 };
 
-const ConfirmedOrder: React.FC<ConfirmedOrderProps> = ({ products }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const [submiting, setSubmiting] = useState(false);
+const ConfirmedOrder: React.FC<ConfirmedOrderProps> = ({
+  products,
+  onSubmit,
+}) => {
+  const [isOpenModal, setOpenModal] = useState(false);
+  const [isSubmiting, setSubmiting] = useState(false);
+  const dispatch = useAppDispatch();
+
   const [inputs, setInputs] = useState({
     email: "",
     name: "",
@@ -39,22 +49,27 @@ const ConfirmedOrder: React.FC<ConfirmedOrderProps> = ({ products }) => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmiting(true);
+
     try {
-      setSubmiting(true);
-      await sendEmail({ data: products, ...inputs });
-      handleClose();
+      sendEmail({ data: products, ...inputs });
+
+      setTimeout(() => {
+        onSubmit(true);
+        handleClose();
+        setSubmiting(false);
+        dispatch(clearProductsCart());
+      }, 1000);
     } catch (e) {
       alert(e.message);
-    } finally {
-      setSubmiting(false);
     }
   };
 
   return (
     <>
-      <Modal open={openModal} onClose={handleClose}>
+      <Modal open={isOpenModal} onClose={handleClose}>
         <Box sx={style}>
           <form
             onSubmit={handleSubmit}
@@ -82,7 +97,7 @@ const ConfirmedOrder: React.FC<ConfirmedOrderProps> = ({ products }) => {
               />
             </div>
             <Button type="submit" color="success" variant="outlined">
-              {submiting ? "loading" : "Confirm"}
+              {isSubmiting ? <CircularProgress size={24} /> : "Confirm"}
             </Button>
           </form>
         </Box>

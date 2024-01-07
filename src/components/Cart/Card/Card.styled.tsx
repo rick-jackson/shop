@@ -5,6 +5,7 @@ export const Container = styled(Card)`
   padding: 12px;
   display: flex;
   align-items: flex-start;
+  gap: 8px;
 `;
 
 export const Info = styled.div`

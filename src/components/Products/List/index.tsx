@@ -1,8 +1,9 @@
 import { Grid } from "@mui/material";
 import ProductCard from "../Card";
+import type { Product } from "src/types/entities/product";
 
 type ProductsList = {
-  products: any;
+  products: Product[];
 };
 
 const ProductsList: React.FC<ProductsList> = ({ products }) => {

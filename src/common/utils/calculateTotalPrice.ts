@@ -1,4 +1,9 @@
-export const calculateTotal = (products, cart) => {
+import type { Product } from "src/types/entities/product";
+
+export const calculateTotal = (
+  products: Product[],
+  cart: { id: number; count: number }[]
+) => {
   let total = 0;
 
   cart.forEach((item) => {

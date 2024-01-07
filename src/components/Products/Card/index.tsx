@@ -2,15 +2,14 @@ import { Grid, CardMedia, Button, Typography } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
+import type { Product } from "src/types/entities/product";
 import { useAppDispatch, useAppSelector } from "@common/hooks/redux";
-import { addShopping } from "@store/actions/shopping";
+import { addProductsCart } from "@store/actions/productsCart";
 import Link from "@components/Link";
 
 import * as Styled from "./Card.styled";
 
-type ProductCardProps = {} & any;
-
-const ProductCard: React.FC<ProductCardProps> = ({
+const ProductCard: React.FC<Product> = ({
   id,
   image,
   title,
@@ -18,8 +17,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   price,
 }) => {
   const dispatch = useAppDispatch();
-  const { shoppings } = useAppSelector((state) => state.shoppings);
-  const isPurchasedProduct = !!shoppings.find((el) => el.id === id);
+  const { productsCart } = useAppSelector((state) => state.productsCart);
+  const isPurchasedProduct = !!productsCart.find((el) => el.id === id);
 
   return (
     <Grid item xs={2} sm={4} md={4} key={id}>
@@ -45,18 +44,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <Button
             variant="outlined"
             onClick={() => {
-              dispatch(addShopping(id));
+              dispatch(addProductsCart(id));
             }}
             disabled={isPurchasedProduct}
             sx={{ gap: "8px", alignItems: "center" }}
           >
             {isPurchasedProduct ? (
               <>
-                In basket <CheckCircleOutlineIcon />
+                In cart <CheckCircleOutlineIcon />
               </>
             ) : (
               <>
-                Add to basket
+                Add to cart
                 <ShoppingCartOutlinedIcon />
               </>
             )}

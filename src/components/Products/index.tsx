@@ -2,19 +2,20 @@ import { Button, Rating, Typography } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
+import type { Product as ProductType } from "src/types/entities/product";
 import { useAppDispatch, useAppSelector } from "@common/hooks/redux";
-import { addShopping } from "@store/actions/shopping";
+import { addProductsCart } from "@store/actions/productsCart";
 
 import * as Styled from "./Product.styled";
 
 type ProductProps = {
-  product: any;
+  product: ProductType;
 };
 
 const Product: React.FC<ProductProps> = ({ product }) => {
-  const { shoppings } = useAppSelector((state) => state.shoppings);
+  const { productsCart } = useAppSelector((state) => state.productsCart);
   const dispatch = useAppDispatch();
-  const isPurchasedProduct = !!shoppings.find((el) => el.id === product.id);
+  const isPurchasedProduct = !!productsCart.find((el) => el.id === product.id);
 
   return (
     <Styled.Container>
@@ -43,17 +44,17 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         </Styled.Price>
         <Button
           variant="text"
-          onClick={() => dispatch(addShopping(product.id))}
+          onClick={() => dispatch(addProductsCart(product.id))}
           disabled={isPurchasedProduct}
           sx={{ gap: "8px", alignItems: "center", marginLeft: "auto" }}
         >
           {isPurchasedProduct ? (
             <>
-              In basket <CheckCircleOutlineIcon />
+              In cart <CheckCircleOutlineIcon />
             </>
           ) : (
             <>
-              Add to basket
+              Add to cart
               <ShoppingCartOutlinedIcon />
             </>
           )}

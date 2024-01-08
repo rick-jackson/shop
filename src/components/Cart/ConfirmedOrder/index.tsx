@@ -33,6 +33,7 @@ const ConfirmedOrder: React.FC<ConfirmedOrderProps> = ({
   const [inputs, setInputs] = useState({
     email: "",
     name: "",
+    phone: "",
   });
 
   const handleOpen = () => {
@@ -60,6 +61,7 @@ const ConfirmedOrder: React.FC<ConfirmedOrderProps> = ({
         onSubmit(true);
         handleClose();
         setSubmiting(false);
+        console.log({ products, userData: inputs });
         dispatch(clearProductsCart());
       }, 1000);
     } catch (e) {
@@ -80,7 +82,9 @@ const ConfirmedOrder: React.FC<ConfirmedOrderProps> = ({
               gap: "12px",
             }}
           >
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div
+              style={{ display: "flex", gap: "12px", flexDirection: "column" }}
+            >
               <TextField
                 label="Name"
                 name="name"
@@ -91,7 +95,16 @@ const ConfirmedOrder: React.FC<ConfirmedOrderProps> = ({
               <TextField
                 label="Email"
                 name="email"
+                type="email"
                 value={inputs.email}
+                onChange={handleOnChange}
+                required
+              />
+              <TextField
+                label="Phone"
+                name="phone"
+                type="tel"
+                value={inputs.phone}
                 onChange={handleOnChange}
                 required
               />

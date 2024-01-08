@@ -20,10 +20,10 @@ export const getAllProducts = async () => {
   return data;
 };
 
-export const getProducts = async (products) => {
+export const getProducts = async (products: Product[]): Promise<Product[]> => {
   return await Promise.all(dataPromises(products));
 };
 
-const dataPromises = (products) => {
+const dataPromises = (products: Product[]) => {
   return products.map(async ({ id }) => await getProduct(id));
 };

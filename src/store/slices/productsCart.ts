@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { enqueueSnackbar } from "notistack";
 
 const initialState = {
   productsCart: [],
@@ -12,14 +13,17 @@ export const ProductsCartSlice = createSlice({
       state.productsCart =
         JSON.parse(localStorage.getItem("productsCart")) || [];
     },
-    addProductsCart: (state, action) => {
+
+    addProductsCart: (state, action: PayloadAction<number>) => {
       state.productsCart = [
         ...state.productsCart,
         { id: action.payload, count: 1 },
       ];
+      enqueueSnackbar("Product added!", { variant: "success" });
       localStorage.setItem("productsCart", JSON.stringify(state.productsCart));
     },
-    deleteProductsCart: (state, action) => {
+
+    deleteProductsCart: (state, action: PayloadAction<number>) => {
       const filteredShopping = state.productsCart.filter(
         (shopping) => shopping.id !== action.payload
       );
@@ -27,7 +31,10 @@ export const ProductsCartSlice = createSlice({
       localStorage.setItem("productsCart", JSON.stringify(filteredShopping));
     },
 
-    incrementProductsCart: (state, action) => {
+    incrementProductsCart: (
+      state,
+      action: PayloadAction<{ id: number; action: string }>
+    ) => {
       const preparedShopping = state.productsCart.map((shopping) => {
         if (shopping.id === action.payload.id) {
           return {

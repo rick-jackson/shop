@@ -31,12 +31,8 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   return (
     <>
       <Head>
-        <title>Feline Fortune</title>
-        <meta
-          name="description"
-          content="Fast delivery of goods from Poland and the countries of the European Union to Ukraine"
-        />
-        {/* <link rel="icon" href="/images/white_logo.png" /> */}
+        <title>Shop</title>
+        <meta name="description" content="shop" />
       </Head>
       <Provider store={store}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>

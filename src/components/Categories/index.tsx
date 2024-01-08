@@ -4,6 +4,7 @@ import Link from "@components/Link";
 import theme from "@theme/index";
 
 import * as Styled from "./Categories.styled";
+import { useRouter } from "next/router";
 
 type CategoriesProps = {
   categories: string[];
@@ -17,10 +18,16 @@ const Categories: React.FC<CategoriesProps> = ({
   onToggleCategoies,
 }) => {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const router = useRouter();
+
   const list = (
     <Styled.List>
       {categories.map((text) => (
-        <ListItem key={text} disablePadding>
+        <ListItem
+          key={text}
+          disablePadding
+          disabled={router.query.category === text}
+        >
           <Link href={`/${text}`}>{text}</Link>
         </ListItem>
       ))}

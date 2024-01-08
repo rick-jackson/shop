@@ -53,7 +53,10 @@ const Search: React.FC = () => {
               height={30}
               style={{ marginRight: "8px", objectFit: "contain" }}
             />
-            <Link href={`/${option.category}/${option.id}`}>
+            <Link
+              style={{ display: "inline" }}
+              href={`/${option.category}/${option.id}`}
+            >
               {option.title}
             </Link>
           </li>

@@ -25,6 +25,7 @@ const Categories: React.FC<CategoriesProps> = ({
       {categories.map((text) => (
         <ListItem
           key={text}
+          onClick={onToggleCategoies}
           disablePadding
           disabled={router.query.category === text}
         >

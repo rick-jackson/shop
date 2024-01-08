@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Box } from "@mui/material";
 
 import Header from "@components/Header";
-
 import Breadcrumbs from "@components/Breadcrumbs";
 import Categories from "@components/Categories";
+import Footer from "@components/Footer";
 
 type LayoutProps = {
   children: JSX.Element;
@@ -48,6 +48,7 @@ const Layout: React.FC<LayoutProps> = ({ children, categories, links }) => {
           {children}
         </Box>
       </Box>
+      <Footer />
     </>
   );
 };

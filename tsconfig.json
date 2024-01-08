@@ -24,7 +24,6 @@
       "@gateways/*": ["src/gateways/*"],
       "@common/*": ["src/common/*"],
       "@store/*": ["./src/store/*"],
-      "@firebase":["src/firebase.js"],
       "@hooks/*": ["src/hooks/*"],
       "@admin/*": ["src/admin/*"],
       "@theme/*": ["src/theme/*"],

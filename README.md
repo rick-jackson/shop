@@ -1,6 +1,6 @@
-# Pokedex
+# Shop
 
-Pokedex - це тестове завдання для компанії Studiopresto. Web-застосунок виконує базовий функціонал e-commerce (магазину)
+Shop - це тестове завдання для компанії Studiopresto. Web-застосунок виконує базовий функціонал e-commerce (магазину)
 
 [Переглянути додаток (Деплой)](https://shop-jet-xi.vercel.app/)
 

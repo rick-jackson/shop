@@ -35,12 +35,21 @@ const HomePage: NextPage<HomePageProps> = ({ products, categories }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const products = await getAllProducts();
-  const categories = await getCategories();
+  try {
+    const products = await getAllProducts();
+    const categories = await getCategories();
 
-  return {
-    props: { products, categories },
-  };
+    return {
+      props: { products, categories },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: `/error`,
+        permanent: false,
+      },
+    };
+  }
 };
 
 export default HomePage;

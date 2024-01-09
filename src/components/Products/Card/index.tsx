@@ -25,13 +25,7 @@ const ProductCard: React.FC<Product> = ({
       <Styled.Card>
         <Styled.Content>
           <Styled.Link href={`/${category}/${id}`}>
-            <CardMedia
-              sx={{ objectFit: "contain", padding: "12px" }}
-              component="img"
-              height="194"
-              image={image}
-              alt={title}
-            />
+            <CardMedia component="img" height="194" image={image} alt={title} />
             {title}
           </Styled.Link>
           <Link href={`/${category}`}>{category}</Link>

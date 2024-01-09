@@ -31,6 +31,8 @@ export const Link = styled(CustomLink)`
   img {
     transition: 0.2s;
     overflow: hidden;
+    object-fit: contain;
+    margin-bottom: 12px;
   }
 
   &:hover {

@@ -10,6 +10,9 @@ const usePagination = (products) => {
   const productsToDisplay = products.slice(startIndex, endIndex);
 
   const handlePageChange = (_, newPage) => {
+    window.scrollTo({
+      top: 0,
+    });
     setCurrentPage(newPage);
   };
 

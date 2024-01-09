@@ -1,6 +1,7 @@
 import { CardContent, Card as MuiCard } from "@mui/material";
 import theme from "@theme/index";
 import styled from "styled-components";
+import CustomLink from "@components/Link";
 
 export const Card = styled(MuiCard)`
   height: 100%;
@@ -20,4 +21,21 @@ export const Content = styled(CardContent)`
   display: flex;
   flex-direction: column;
   gap: 8px;
+`;
+
+export const Link = styled(CustomLink)`
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    transition: 0.2s;
+    overflow: hidden;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
 `;

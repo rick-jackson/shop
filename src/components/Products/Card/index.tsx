@@ -23,17 +23,17 @@ const ProductCard: React.FC<Product> = ({
   return (
     <Grid item xs={2} sm={4} md={4} key={id}>
       <Styled.Card>
-        <CardMedia
-          sx={{ objectFit: "contain", padding: "12px" }}
-          component="img"
-          height="194"
-          image={image}
-          alt={title}
-        />
         <Styled.Content>
-          <Link style={{ fontSize: "20px" }} href={`/${category}/${id}`}>
+          <Styled.Link href={`/${category}/${id}`}>
+            <CardMedia
+              sx={{ objectFit: "contain", padding: "12px" }}
+              component="img"
+              height="194"
+              image={image}
+              alt={title}
+            />
             {title}
-          </Link>
+          </Styled.Link>
           <Link href={`/${category}`}>{category}</Link>
           <Typography
             variant="h5"

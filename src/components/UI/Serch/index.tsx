@@ -9,6 +9,7 @@ import type { Product } from "src/types/entities/product";
 import Link from "@components/Link";
 
 import * as Styled from "./Search.styled";
+import useAutocomplete from "@common/hooks/useAutocomplete";
 
 const filterOptions = createFilterOptions({
   matchFrom: "start",
@@ -16,14 +17,16 @@ const filterOptions = createFilterOptions({
 });
 
 const Search: React.FC = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      const { data } = await axios.get("https://fakestoreapi.com/products");
-      setProducts(data);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const { data } = await axios.get("https://fakestoreapi.com/products");
+  //     setProducts(data);
+  //   })();
+  // }, []);
+
+  const { loading, options, setOpen, open } = useAutocomplete();
 
   return (
     <Styled.Search>
@@ -31,35 +34,31 @@ const Search: React.FC = () => {
         <SearchIcon />
       </Styled.SearchIconWrapper>
       <Styled.InputBase
-        options={products}
+        options={options}
         getOptionLabel={(option: Product) => option.title}
         filterOptions={filterOptions}
         sx={{ maxWidth: 300 }}
         renderInput={(params) => <TextField {...params} />}
-        renderOption={(_, option: any) => (
-          <li
-            style={{
-              padding: "4px",
-              maxWidth: "250px",
-              overflow: "hidden",
-              whiteSpace: "nowrap",
-              textOverflow: "ellipsis",
-            }}
-          >
-            <Image
-              src={option.image}
-              alt={option.title}
-              width={30}
-              height={30}
-              style={{ marginRight: "8px", objectFit: "contain" }}
-            />
-            <Link
-              style={{ display: "inline" }}
-              href={`/${option.category}/${option.id}`}
-            >
-              {option.title}
+        open={open}
+        onOpen={() => {
+          setOpen(true);
+        }}
+        onClose={() => {
+          setOpen(false);
+        }}
+        loading={loading}
+        renderOption={(_, option: Product) => (
+          <Styled.ListItem key={option.id} onClick={() => setOpen(false)}>
+            <Link href={`/${option.category}/${option.id}`}>
+              <Image
+                src={option.image}
+                alt={option.title}
+                width={30}
+                height={30}
+              />
+              <span>{option.title}</span>
             </Link>
-          </li>
+          </Styled.ListItem>
         )}
       />
     </Styled.Search>

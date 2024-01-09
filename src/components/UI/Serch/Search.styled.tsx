@@ -1,5 +1,5 @@
 import { styled as MuiStyled, alpha } from "@mui/material/styles";
-import { Autocomplete } from "@mui/material";
+import { Autocomplete, ListItemButton as MuiListItem } from "@mui/material";
 import styled from "styled-components";
 
 export const Search = MuiStyled("div")(({ theme }) => ({
@@ -42,5 +42,24 @@ export const InputBase = styled(Autocomplete)`
 
   input {
     color: #fff;
+  }
+`;
+
+export const ListItem = styled(MuiListItem)`
+  a {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 170px;
+  }
+
+  img {
+    margin-right: 8px;
+    object-fit: contain;
   }
 `;

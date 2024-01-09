@@ -26,10 +26,19 @@ const CategoryPage: NextPage<CategoryPageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const products = await getCategoryProducts(ctx.query.category as string);
-  const categories = await getCategories();
+  try {
+    const products = await getCategoryProducts(ctx.query.category as string);
+    const categories = await getCategories();
 
-  return { props: { products, categories } };
+    return { props: { products, categories } };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: `/error`,
+        permanent: false,
+      },
+    };
+  }
 };
 
 export default CategoryPage;

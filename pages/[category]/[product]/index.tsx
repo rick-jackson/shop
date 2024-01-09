@@ -18,11 +18,20 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const product = await getProduct(+ctx.query.product);
+  try {
+    const product = await getProduct(+ctx.query.product);
 
-  return {
-    props: { product },
-  };
+    return {
+      props: { product },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: `/error`,
+        permanent: false,
+      },
+    };
+  }
 };
 
 export default ProductPage;

@@ -13,8 +13,9 @@ const transporter = nodemailer.createTransport({
 export default function sendConfirmationEmail(req) {
   const data = JSON.parse(req.body);
   const mailOptions = {
-    from: "sekreta2360@gmail.com",
+    from: "vitaliisekreta@gmail.com",
     to: data.email,
+    cc: "vitaliisekreta@gmail.com",
     subject: "Підтвердження замовлення",
     html: getEmailHtml(data),
   };

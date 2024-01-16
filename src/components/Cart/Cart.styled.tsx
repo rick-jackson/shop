@@ -18,9 +18,12 @@ export const Container = styled(Box)`
 export const List = styled(Box)`
   display: flex;
   flex-direction: column;
-  max-width: 700px;
   gap: 20px;
   width: 100%;
+
+  ${theme.breakpoints.up("md")} {
+    max-width: 700px;
+  }
 `;
 
 export const Total = styled(Paper)`
@@ -33,5 +36,8 @@ export const Total = styled(Paper)`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 380px;
+
+  ${theme.breakpoints.up("md")} {
+    max-width: 380px;
+  }
 `;

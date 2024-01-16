@@ -1,3 +1,4 @@
+import Link from "@components/Link";
 import {
   Table,
   TableBody,
@@ -22,14 +23,14 @@ const OrderTable: React.FC<OrderTableProps> = ({ products, productsCart }) => {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell align="left">Title</TableCell>
+            <TableCell align="left">Name</TableCell>
             <TableCell align="left">Count</TableCell>
             <TableCell align="left">Price</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {productsCart.map(({ id, count }) => {
-            const { title, image, price } = products?.find(
+            const { title, image, price, category } = products?.find(
               (el) => el.id === id
             );
             return (
@@ -47,7 +48,9 @@ const OrderTable: React.FC<OrderTableProps> = ({ products, productsCart }) => {
                   />
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {title}
+                  <Link target="_blank" href={`/${category}/${id}`}>
+                    {title}
+                  </Link>
                 </TableCell>
                 <TableCell component="th" scope="row">
                   {count}

@@ -38,13 +38,13 @@ const Categories: React.FC<CategoriesProps> = ({
   return (
     <>
       {matches ? (
-        <Drawer
+        <Styled.Drawer
           anchor="left"
           open={isOpenCategories}
           onClose={onToggleCategoies}
         >
           {list}
-        </Drawer>
+        </Styled.Drawer>
       ) : (
         <Box component="aside" sx={{ display: "flex" }}>
           {list}

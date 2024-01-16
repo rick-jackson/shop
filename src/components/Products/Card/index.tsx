@@ -1,5 +1,4 @@
 import { Grid, CardMedia, Button, Typography } from "@mui/material";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import type { Product } from "src/types/entities/product";
@@ -18,7 +17,6 @@ const ProductCard: React.FC<Product> = ({
 }) => {
   const dispatch = useAppDispatch();
   const { productsCart } = useAppSelector((state) => state.productsCart);
-  const isPurchasedProduct = !!productsCart.find((el) => el.id === id);
 
   return (
     <Grid item xs={2} sm={4} md={4} key={id}>
@@ -41,14 +39,12 @@ const ProductCard: React.FC<Product> = ({
               dispatch(addProductsCart(id));
             }}
             sx={{ gap: "8px", alignItems: "center" }}
-            {...(isPurchasedProduct && { color: "success" })}
+            {...(!!productsCart.find((el) => el.id === id) && {
+              color: "success",
+            })}
           >
             add to cart
-            {isPurchasedProduct ? (
-              <CheckCircleOutlineIcon />
-            ) : (
-              <ShoppingCartOutlinedIcon />
-            )}
+            <ShoppingCartOutlinedIcon />
           </Button>
         </Styled.Content>
       </Styled.Card>

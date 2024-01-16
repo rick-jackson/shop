@@ -15,7 +15,6 @@ type ProductProps = {
 const Product: React.FC<ProductProps> = ({ product }) => {
   const { productsCart } = useAppSelector((state) => state.productsCart);
   const dispatch = useAppDispatch();
-  const isPurchasedProduct = !!productsCart.find((el) => el.id === product.id);
 
   return (
     <Styled.Container>
@@ -43,14 +42,12 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         <Styled.Button
           variant="text"
           onClick={() => dispatch(addProductsCart(product.id))}
-          {...(isPurchasedProduct && { color: "success" })}
+          {...(!!productsCart.find((el) => el.id === product.id) && {
+            color: "success",
+          })}
         >
           add to cart
-          {isPurchasedProduct ? (
-            <CheckCircleOutlineIcon />
-          ) : (
-            <ShoppingCartOutlinedIcon />
-          )}
+          <ShoppingCartOutlinedIcon />
         </Styled.Button>
       </Styled.Info>
     </Styled.Container>

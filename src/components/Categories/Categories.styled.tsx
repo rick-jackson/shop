@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { List as MuiList } from "@mui/material";
+import { List as MuiList, Drawer as MuiDrawer } from "@mui/material";
 import theme from "@theme/index";
 
 export const List = styled(MuiList)`
@@ -12,5 +12,16 @@ export const List = styled(MuiList)`
   ${theme.breakpoints.up("md")} {
     margin-top: 0px;
     padding: 40px;
+  }
+`;
+
+export const Drawer = styled(MuiDrawer)`
+  .MuiPaper-root {
+    width: 50%;
+    padding: 20px;
+
+    ${theme.breakpoints.down("sm")} {
+      width: 100%;
+    }
   }
 `;

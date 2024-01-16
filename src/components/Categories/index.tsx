@@ -1,6 +1,7 @@
-import { Box, Drawer, ListItem, useMediaQuery } from "@mui/material";
+import { Box, ListItem, useMediaQuery } from "@mui/material";
 import { useRouter } from "next/router";
 
+import { capitalizeFirstLetter } from "@common/utils/capitalizeFirstLetter";
 import Link from "@components/Link";
 import theme from "@theme/index";
 
@@ -29,7 +30,7 @@ const Categories: React.FC<CategoriesProps> = ({
           disablePadding
           disabled={router.query.category === text}
         >
-          <Link href={`/${text}`}>{text}</Link>
+          <Link href={`/${text}`}>{capitalizeFirstLetter(text)}</Link>
         </ListItem>
       ))}
     </Styled.List>

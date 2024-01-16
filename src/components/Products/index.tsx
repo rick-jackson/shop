@@ -2,6 +2,7 @@ import { Rating, Typography } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import type { Product as ProductType } from "src/types/entities/product";
+import { capitalizeFirstLetter } from "@common/utils/capitalizeFirstLetter";
 import { useAppDispatch, useAppSelector } from "@common/hooks/redux";
 import { addProductsCart } from "@store/actions/productsCart";
 import Link from "@components/Link";
@@ -30,7 +31,7 @@ const Product: React.FC<ProductProps> = ({
       />
       <Styled.Info>
         <Styled.Title variant="h1">{title}</Styled.Title>
-        <Link href={`/${category}`}>{category}</Link>
+        <Link href={`/${category}`}>{capitalizeFirstLetter(category)}</Link>
         <Typography variant="body1"> {description}</Typography>
         <Styled.Price>
           <Styled.Rating>

@@ -1,6 +1,7 @@
 import Stack from "@mui/material/Stack";
 import HomeIcon from "@mui/icons-material/Home";
 
+import { capitalizeFirstLetter } from "@common/utils/capitalizeFirstLetter";
 import Link from "@components/Link";
 
 import * as Styled from "./Breadcrumbs.styled";
@@ -26,9 +27,9 @@ const Breadcrumbs: React.FC<Breadcrumbs> = ({ links }) => {
         {links.map((link, index) => (
           <div key={link}>
             {index + 1 !== links.length ? (
-              <Link href={`/${link}`}>{link}</Link>
+              <Link href={`/${link}`}>{capitalizeFirstLetter(link)}</Link>
             ) : (
-              <span>{link}</span>
+              <span>{capitalizeFirstLetter(link)}</span>
             )}
           </div>
         ))}

@@ -2,7 +2,7 @@ import { getAllProducts } from "@gateways/getProducts";
 import { useEffect, useState } from "react";
 import type { Product } from "src/types/entities/product";
 
-const useAutocomplete = () => {
+const useAutocomplete = (str: string) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<readonly Product[]>([]);
   const loading = open && options.length === 0;
@@ -41,7 +41,17 @@ const useAutocomplete = () => {
     }
   }, [open]);
 
-  return { loading, options, handleClose, handleOpen, open };
+  return {
+    loading,
+    options: !str
+      ? []
+      : options.filter((option) =>
+          option.title.toLowerCase().includes(str.toLowerCase())
+        ),
+    handleClose,
+    handleOpen,
+    open,
+  };
 };
 
 export default useAutocomplete;

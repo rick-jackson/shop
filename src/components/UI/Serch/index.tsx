@@ -1,7 +1,7 @@
 import Image from "next/image";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
-import { createFilterOptions } from "@mui/material/Autocomplete";
 
 import type { Product } from "src/types/entities/product";
 import useAutocomplete from "@common/hooks/useAutocomplete";
@@ -9,13 +9,10 @@ import Link from "@components/Link";
 
 import * as Styled from "./Search.styled";
 
-const filterOptions = createFilterOptions({
-  matchFrom: "start",
-  stringify: (option: Product) => option.title,
-});
-
 const Search: React.FC = () => {
-  const { loading, options, handleClose, handleOpen, open } = useAutocomplete();
+  const [inputValue, setinputValue] = useState<string>("");
+  const { loading, options, handleClose, handleOpen, open } =
+    useAutocomplete(inputValue);
 
   return (
     <Styled.Search>
@@ -25,8 +22,13 @@ const Search: React.FC = () => {
       <Styled.InputBase
         options={options}
         getOptionLabel={(option: Product) => option.title}
-        filterOptions={filterOptions}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => (
+          <TextField
+            value={inputValue}
+            onChange={(e) => setinputValue(e.target.value)}
+            {...params}
+          />
+        )}
         open={open}
         onOpen={handleOpen}
         onClose={handleClose}

@@ -63,6 +63,9 @@ const GlobalStyle = createGlobalStyle`
     overflow: auto;
   }
 
+  .MuiAutocomplete-listbox {
+    overflow-x: hidden;
+  }
  
 `;
 

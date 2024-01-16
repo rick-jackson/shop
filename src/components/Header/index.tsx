@@ -1,14 +1,7 @@
+import Image from "next/image";
 import { useEffect } from "react";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Badge,
-  useMediaQuery,
-} from "@mui/material";
 import GridViewIcon from "@mui/icons-material/GridView";
+import { AppBar, Box, Typography, Badge, useMediaQuery } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { useAppDispatch, useAppSelector } from "@common/hooks/redux";
@@ -16,6 +9,8 @@ import { getProductsCart } from "@store/actions/productsCart";
 import Search from "@components/UI/Serch";
 import Link from "@components/Link";
 import theme from "@theme/index";
+
+import * as Styled from "./Header.styled";
 
 type HeaderProps = {
   onToggleCategories: () => void;
@@ -39,20 +34,18 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <AppBar sx={{ zIndex: 1300 }} position="static">
-      <Toolbar>
+      <Styled.Toolbar>
         {isShowCategories && matches && (
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-            onClick={onToggleCategories}
-          >
+          <Styled.Button size="large" onClick={onToggleCategories}>
             <GridViewIcon />
-          </IconButton>
+          </Styled.Button>
         )}
-        <Link href="/" style={{ color: "#fff", textDecoration: "none" }}>
+        <Styled.Logo
+          href="/"
+          $isShowCategories={isShowCategories}
+          style={{ textDecoration: "none" }}
+        >
+          <Image src="/img/logo.png" alt="logo" height={30} width={30} />
           <Typography
             variant="h6"
             noWrap
@@ -61,19 +54,19 @@ const Header: React.FC<HeaderProps> = ({
           >
             Shop
           </Typography>
-        </Link>
+        </Styled.Logo>
         <Search />
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: "flex" }}>
-          <IconButton size="large" color="inherit" sx={{ height: "48px" }}>
+          <Styled.Button size="large">
             <Badge badgeContent={productsCart.length} color="error">
               <Link href="/cart" style={{ color: "#fff" }}>
                 <ShoppingCartOutlinedIcon />
               </Link>
             </Badge>
-          </IconButton>
+          </Styled.Button>
         </Box>
-      </Toolbar>
+      </Styled.Toolbar>
     </AppBar>
   );
 };

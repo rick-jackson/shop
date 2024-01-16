@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Box } from "@mui/material";
 
-import Header from "@components/Header";
 import Breadcrumbs from "@components/Breadcrumbs";
 import Categories from "@components/Categories";
+import Header from "@components/Header";
 import Footer from "@components/Footer";
 
 import * as Styled from "./Layout.styled";
@@ -28,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children, categories, links }) => {
         onToggleCategories={handleToggleCategoies}
         isShowCategories={isCategories}
       />
-      <Box display="flex" flex={1}>
+      <Styled.Wrapper>
         {isCategories && (
           <Categories
             categories={categories}
@@ -40,7 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children, categories, links }) => {
           {links && <Breadcrumbs links={links} />}
           {children}
         </Styled.Container>
-      </Box>
+      </Styled.Wrapper>
       <Footer />
     </>
   );

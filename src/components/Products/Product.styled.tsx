@@ -17,6 +17,7 @@ export const Image = styled(NextImage)`
   width: 40%;
   height: auto;
   object-fit: contain;
+  max-height: 500px;
 
   ${theme.breakpoints.down("md")} {
     width: 60%;
@@ -34,6 +35,7 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: 50%;
 `;
 
 export const Price = styled.div`

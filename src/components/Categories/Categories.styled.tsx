@@ -3,22 +3,23 @@ import { List as MuiList, Drawer as MuiDrawer } from "@mui/material";
 import theme from "@theme/index";
 
 export const List = styled(MuiList)`
-  padding: 12px;
   gap: 12px;
   display: flex;
   flex-direction: column;
-  margin-top: 60px;
+  white-space: nowrap;
+  padding: 12px;
 
-  ${theme.breakpoints.up("md")} {
-    margin-top: 0px;
-    padding: 40px;
+  ${theme.breakpoints.down("md")} {
+    font-size: 32px;
+    margin: 80px auto auto;
   }
 `;
 
 export const Drawer = styled(MuiDrawer)`
+  height: 100%;
+
   .MuiPaper-root {
     width: 50%;
-    padding: 20px;
 
     ${theme.breakpoints.down("sm")} {
       width: 100%;

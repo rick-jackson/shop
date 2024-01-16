@@ -10,12 +10,10 @@ export const Search = MuiStyled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    maxWidth: "300px",
+    // margin: `0 ${theme.spacing(3)}`,
   },
 }));
 
@@ -31,7 +29,6 @@ export const SearchIconWrapper = MuiStyled("div")(({ theme }) => ({
 
 export const InputBase = styled(Autocomplete)`
   padding-left: 30px;
-  max-width: 300px;
 
   svg {
     display: none;
@@ -56,7 +53,6 @@ export const ListItem = styled(MuiListItem)`
   span {
     text-overflow: ellipsis;
     overflow: hidden;
-    max-width: 170px;
   }
 
   img {

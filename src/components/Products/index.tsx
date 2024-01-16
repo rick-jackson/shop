@@ -1,10 +1,10 @@
 import { Rating, Typography } from "@mui/material";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import type { Product as ProductType } from "src/types/entities/product";
 import { useAppDispatch, useAppSelector } from "@common/hooks/redux";
 import { addProductsCart } from "@store/actions/productsCart";
+import Link from "@components/Link";
 
 import * as Styled from "./Product.styled";
 
@@ -12,37 +12,37 @@ type ProductProps = {
   product: ProductType;
 };
 
-const Product: React.FC<ProductProps> = ({ product }) => {
+const Product: React.FC<ProductProps> = ({
+  product: { image, title, id, category, price, rating, description },
+}) => {
   const { productsCart } = useAppSelector((state) => state.productsCart);
   const dispatch = useAppDispatch();
 
   return (
     <Styled.Container>
       <Styled.Image
-        src={product.image}
-        alt={product.title}
+        src={image}
+        alt={title}
         width={0}
         height={0}
         sizes="100vw"
         priority
       />
       <Styled.Info>
-        <Styled.Title variant="h1">{product.title}</Styled.Title>
-        <span>{product.category}</span>
-        <Typography variant="body1"> {product.description}</Typography>
+        <Styled.Title variant="h1">{title}</Styled.Title>
+        <Link href={`/${category}`}>{category}</Link>
+        <Typography variant="body1"> {description}</Typography>
         <Styled.Price>
           <Styled.Rating>
-            <Rating precision={0.5} value={product.rating.rate} readOnly />
-            <span>({product.rating.count})</span>
+            <Rating precision={0.5} value={rating.rate} readOnly />
+            <span>({rating.count})</span>
           </Styled.Rating>
-          <span style={{ fontWeight: 700, fontSize: "22px" }}>
-            $ {product.price}
-          </span>
+          <span style={{ fontWeight: 700, fontSize: "22px" }}>$ {price}</span>
         </Styled.Price>
         <Styled.Button
           variant="text"
-          onClick={() => dispatch(addProductsCart(product.id))}
-          {...(!!productsCart.find((el) => el.id === product.id) && {
+          onClick={() => dispatch(addProductsCart(id))}
+          {...(!!productsCart.find((product) => product.id === id) && {
             color: "success",
           })}
         >

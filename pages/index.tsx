@@ -1,8 +1,6 @@
 import { type GetServerSideProps, NextPage } from "next";
-import { Pagination } from "@mui/material";
 
 import type { Product } from "src/types/entities/product";
-import usePagination from "@common/hooks/usePagination";
 import { getCategories } from "@gateways/getCategories";
 import { getAllProducts } from "@gateways/getProducts";
 import ProductsList from "@components/Products/List";
@@ -14,20 +12,9 @@ type HomePageProps = {
 };
 
 const HomePage: NextPage<HomePageProps> = ({ products, categories }) => {
-  const { productsToDisplay, handlePageChange, count, currentPage } =
-    usePagination(products);
-
   return (
     <Layout categories={categories}>
-      <ProductsList products={productsToDisplay} />
-      <Pagination
-        sx={{ margin: "auto auto 0" }}
-        count={count}
-        page={currentPage}
-        variant="outlined"
-        shape="rounded"
-        onChange={handlePageChange}
-      />
+      <ProductsList products={products} />
     </Layout>
   );
 };

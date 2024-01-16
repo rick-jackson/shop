@@ -10,10 +10,6 @@ export const Card = styled(MuiCard)`
   box-shadow: none;
   border: 1px solid #dbdbdb;
   border-radius: 0;
-
-  ${theme.breakpoints.up("md")} {
-    max-width: 385px;
-  }
 `;
 
 export const Content = styled(CardContent)`

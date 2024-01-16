@@ -6,7 +6,6 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { useAppDispatch, useAppSelector } from "@common/hooks/redux";
 import { getProductsCart } from "@store/actions/productsCart";
-import Search from "@components/UI/Serch";
 import Link from "@components/Link";
 import theme from "@theme/index";
 
@@ -55,7 +54,6 @@ const Header: React.FC<HeaderProps> = ({
             Shop
           </Typography>
         </Styled.Logo>
-        <Search />
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: "flex" }}>
           <Styled.Button size="large">

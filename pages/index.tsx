@@ -4,6 +4,7 @@ import type { Product } from "src/types/entities/product";
 import { getCategories } from "@gateways/getCategories";
 import { getAllProducts } from "@gateways/getProducts";
 import ProductsList from "@components/Products/List";
+import Search from "@components/UI/Serch";
 import Layout from "@components/Layout";
 
 type HomePageProps = {
@@ -14,6 +15,7 @@ type HomePageProps = {
 const HomePage: NextPage<HomePageProps> = ({ products, categories }) => {
   return (
     <Layout categories={categories}>
+      <Search />
       <ProductsList products={products} />
     </Layout>
   );

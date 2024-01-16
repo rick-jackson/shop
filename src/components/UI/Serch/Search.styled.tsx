@@ -4,17 +4,15 @@ import styled from "styled-components";
 
 export const Search = MuiStyled("div")(({ theme }) => ({
   position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  borderRadius: 0,
   height: "48px",
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
+  color: "blue",
+  border: "1px solid #dbdbdb",
+  marginBottom: "12px",
   marginLeft: 0,
   width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    // margin: `0 ${theme.spacing(3)}`,
-  },
+  display: "flex",
+  alignItems: "center",
 }));
 
 export const SearchIconWrapper = MuiStyled("div")(({ theme }) => ({
@@ -29,6 +27,7 @@ export const SearchIconWrapper = MuiStyled("div")(({ theme }) => ({
 
 export const InputBase = styled(Autocomplete)`
   padding-left: 30px;
+  width: 100%;
 
   svg {
     display: none;
@@ -36,10 +35,6 @@ export const InputBase = styled(Autocomplete)`
 
   fieldset {
     display: none;
-  }
-
-  input {
-    color: #fff;
   }
 `;
 

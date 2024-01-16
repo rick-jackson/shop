@@ -16,7 +16,7 @@ const ProductsList: React.FC<ProductsList> = ({ products }) => {
     <>
       <Grid
         container
-        spacing={{ xs: 2, md: 4 }}
+        spacing={{ xs: 2, md: 2, lg: 12 }}
         columns={{ xs: 1, sm: 8, md: 12 }}
         sx={{ marginBottom: "12px" }}
       >

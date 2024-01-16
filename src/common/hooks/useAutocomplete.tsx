@@ -7,6 +7,14 @@ const useAutocomplete = () => {
   const [options, setOptions] = useState<readonly Product[]>([]);
   const loading = open && options.length === 0;
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   useEffect(() => {
     let active = true;
 
@@ -33,7 +41,7 @@ const useAutocomplete = () => {
     }
   }, [open]);
 
-  return { loading, options, setOpen, open };
+  return { loading, options, handleClose, handleOpen, open };
 };
 
 export default useAutocomplete;

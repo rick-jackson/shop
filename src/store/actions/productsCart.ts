@@ -13,10 +13,10 @@ export const deleteProductsCart = (id: number) => (dispatch: AppDispatch) => {
   dispatch(ProductsCartSlice.actions.deleteProductsCart(id));
 };
 
-export const incrementProductsCart =
+export const toggleProductCount =
   ({ id, action }: { id: number; action: string }) =>
   (dispatch: AppDispatch) => {
-    dispatch(ProductsCartSlice.actions.incrementProductsCart({ id, action }));
+    dispatch(ProductsCartSlice.actions.toggleProductCount({ id, action }));
   };
 
 export const clearProductsCart = () => (dispatch: AppDispatch) => {

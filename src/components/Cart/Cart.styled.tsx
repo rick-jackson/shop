@@ -35,17 +35,3 @@ export const Total = styled(Paper)`
   width: 100%;
   max-width: 380px;
 `;
-
-export const EmptyShoppingCart = styled.div`
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  ${theme.breakpoints.down("md")} {
-    h3 {
-      font-size: 32px;
-    }
-  }
-`;

@@ -9,7 +9,7 @@ export const getEmailHtml = (body) => {
           <body>
             <h1>Hi, ${body.name}!</h1>
             <p>Your order has been successfully received. Thank you!</p>
-            <p>Number for feedback: ${body.phone}</p>
+            <p>Number for feedback: ${body.phoneNumber}</p>
             <table style="border-collapse: collapse; width: 100%;">
               <thead>
                 <tr style="border-bottom: 1px solid black;">

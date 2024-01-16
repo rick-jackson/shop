@@ -1,4 +1,5 @@
 import { getEmailHtml } from "@services/emailHtml";
+import { enqueueSnackbar } from "notistack";
 
 const nodemailer = require("nodemailer");
 
@@ -16,15 +17,15 @@ export default function sendConfirmationEmail(req) {
     from: "vitaliisekreta@gmail.com",
     to: data.email,
     cc: "vitaliisekreta@gmail.com",
-    subject: "Підтвердження замовлення",
+    subject: "Order confirmation",
     html: getEmailHtml(data),
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      console.log("Помилка відправлення листа: ", error);
+      enqueueSnackbar("Error!", { variant: "error" });
     } else {
-      console.log("Лист було успішно відправлено: " + info.response);
+      enqueueSnackbar("Success!", { variant: "success" });
     }
   });
 }

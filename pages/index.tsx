@@ -19,17 +19,15 @@ const HomePage: NextPage<HomePageProps> = ({ products, categories }) => {
 
   return (
     <Layout categories={categories}>
-      <>
-        <ProductsList products={productsToDisplay} />
-        <Pagination
-          sx={{ margin: "auto" }}
-          count={count}
-          page={currentPage}
-          variant="outlined"
-          shape="rounded"
-          onChange={handlePageChange}
-        />
-      </>
+      <ProductsList products={productsToDisplay} />
+      <Pagination
+        sx={{ margin: "auto auto 0" }}
+        count={count}
+        page={currentPage}
+        variant="outlined"
+        shape="rounded"
+        onChange={handlePageChange}
+      />
     </Layout>
   );
 };

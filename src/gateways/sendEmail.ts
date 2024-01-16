@@ -1,5 +1,4 @@
 export const sendEmail = async (props) => {
-  // console.log(props);
   const apiEndpoint = "/api/email";
 
   await fetch(apiEndpoint, {

@@ -1,4 +1,4 @@
-import { Button, Rating, Typography } from "@mui/material";
+import { Rating, Typography } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
@@ -28,9 +28,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         priority
       />
       <Styled.Info>
-        <Typography variant="h1" fontSize="28px">
-          {product.title}
-        </Typography>
+        <Styled.Title variant="h1">{product.title}</Styled.Title>
         <span>{product.category}</span>
         <Typography variant="body1"> {product.description}</Typography>
         <Styled.Price>
@@ -42,11 +40,10 @@ const Product: React.FC<ProductProps> = ({ product }) => {
             $ {product.price}
           </span>
         </Styled.Price>
-        <Button
+        <Styled.Button
           variant="text"
           onClick={() => dispatch(addProductsCart(product.id))}
           disabled={isPurchasedProduct}
-          sx={{ gap: "8px", alignItems: "center", marginLeft: "auto" }}
         >
           {isPurchasedProduct ? (
             <>
@@ -58,7 +55,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
               <ShoppingCartOutlinedIcon />
             </>
           )}
-        </Button>
+        </Styled.Button>
       </Styled.Info>
     </Styled.Container>
   );

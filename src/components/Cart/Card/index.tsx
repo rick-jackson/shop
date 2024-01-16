@@ -5,7 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import type { Product } from "src/types/entities/product";
 import {
   deleteProductsCart,
-  incrementProductsCart,
+  toggleProductCount,
 } from "@store/actions/productsCart";
 import { useAppDispatch } from "@common/hooks/redux";
 import Counter from "@components/UI/Counter";
@@ -51,10 +51,10 @@ const BasketCard: React.FC<BasketCardProps> = ({ id, count, products }) => {
           <Counter
             count={count}
             onIncrement={() =>
-              dispatch(incrementProductsCart({ id, action: "increment" }))
+              dispatch(toggleProductCount({ id, action: "increment" }))
             }
             onDecrement={() =>
-              dispatch(incrementProductsCart({ id, action: "decrement" }))
+              dispatch(toggleProductCount({ id, action: "decrement" }))
             }
           />
         </Styled.Actions>

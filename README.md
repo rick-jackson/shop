@@ -41,6 +41,8 @@ Shop - це тестове завдання для компанії Studiopresto
 ## Використані технології:
 
 - [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Axios](https://axios-http.com/)
 - [Styled Components](https://styled-components.com/)
 - [Material-UI](https://mui.com/)

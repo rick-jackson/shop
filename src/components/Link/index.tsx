@@ -2,7 +2,11 @@ import { LinkProps } from "next/link";
 import * as Styled from "./Link.styled";
 
 const Link: React.FC<
-  LinkProps & { children: React.ReactNode; style?: React.CSSProperties }
+  LinkProps & {
+    children: React.ReactNode;
+    style?: React.CSSProperties;
+    target?: string;
+  }
 > = ({ children, style, ...props }) => {
   return (
     <Styled.Link style={style} {...props}>

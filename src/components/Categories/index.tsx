@@ -1,10 +1,10 @@
 import { Box, Drawer, ListItem, useMediaQuery } from "@mui/material";
+import { useRouter } from "next/router";
 
 import Link from "@components/Link";
 import theme from "@theme/index";
 
 import * as Styled from "./Categories.styled";
-import { useRouter } from "next/router";
 
 type CategoriesProps = {
   categories: string[];

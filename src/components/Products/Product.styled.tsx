@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import NextImage from "next/image";
 import theme from "@theme/index";
+import { Typography, Button as MuiButton } from "@mui/material";
 
 export const Container = styled.div`
   width: 100%;
@@ -25,6 +26,10 @@ export const Image = styled(NextImage)`
   }
 `;
 
+export const Title = styled(Typography)`
+  font-size: 28px;
+`;
+
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,4 +47,10 @@ export const Rating = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+`;
+
+export const Button = styled(MuiButton)`
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
 `;

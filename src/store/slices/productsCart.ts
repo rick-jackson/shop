@@ -31,7 +31,7 @@ export const ProductsCartSlice = createSlice({
       localStorage.setItem("productsCart", JSON.stringify(filteredShopping));
     },
 
-    incrementProductsCart: (
+    toggleProductCount: (
       state,
       action: PayloadAction<{ id: number; action: string }>
     ) => {

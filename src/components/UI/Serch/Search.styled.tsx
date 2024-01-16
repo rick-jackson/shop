@@ -31,6 +31,7 @@ export const SearchIconWrapper = MuiStyled("div")(({ theme }) => ({
 
 export const InputBase = styled(Autocomplete)`
   padding-left: 30px;
+  max-width: 300px;
 
   svg {
     display: none;

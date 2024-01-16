@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material";
 
 import Header from "@components/Header";
@@ -6,14 +6,17 @@ import Breadcrumbs from "@components/Breadcrumbs";
 import Categories from "@components/Categories";
 import Footer from "@components/Footer";
 
+import * as Styled from "./Layout.styled";
+
 type LayoutProps = {
-  children: JSX.Element;
+  children: React.ReactNode;
   links?: string[];
   categories?: string[];
 };
 
 const Layout: React.FC<LayoutProps> = ({ children, categories, links }) => {
   const [isOpenCategories, setOpenCategories] = useState(false);
+  const isCategories = !!categories?.length;
 
   const handleToggleCategoies = () => {
     setOpenCategories(!isOpenCategories);
@@ -23,30 +26,20 @@ const Layout: React.FC<LayoutProps> = ({ children, categories, links }) => {
     <>
       <Header
         onToggleCategories={handleToggleCategoies}
-        isShowCategories={!!categories?.length}
+        isShowCategories={isCategories}
       />
       <Box display="flex" flex={1}>
-        {!!categories?.length && (
+        {isCategories && (
           <Categories
             categories={categories}
             isOpenCategories={isOpenCategories}
             onToggleCategoies={handleToggleCategoies}
           />
         )}
-        <Box
-          component="main"
-          p={3}
-          sx={{
-            width: "100%",
-            maxWidth: "1360px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <Styled.Container component="main">
           {links && <Breadcrumbs links={links} />}
           {children}
-        </Box>
+        </Styled.Container>
       </Box>
       <Footer />
     </>

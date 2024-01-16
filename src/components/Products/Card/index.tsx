@@ -40,18 +40,14 @@ const ProductCard: React.FC<Product> = ({
             onClick={() => {
               dispatch(addProductsCart(id));
             }}
-            disabled={isPurchasedProduct}
             sx={{ gap: "8px", alignItems: "center" }}
+            {...(isPurchasedProduct && { color: "success" })}
           >
+            add to cart
             {isPurchasedProduct ? (
-              <>
-                In cart <CheckCircleOutlineIcon />
-              </>
+              <CheckCircleOutlineIcon />
             ) : (
-              <>
-                Add to cart
-                <ShoppingCartOutlinedIcon />
-              </>
+              <ShoppingCartOutlinedIcon />
             )}
           </Button>
         </Styled.Content>

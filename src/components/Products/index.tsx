@@ -43,17 +43,13 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         <Styled.Button
           variant="text"
           onClick={() => dispatch(addProductsCart(product.id))}
-          disabled={isPurchasedProduct}
+          {...(isPurchasedProduct && { color: "success" })}
         >
+          add to cart
           {isPurchasedProduct ? (
-            <>
-              In cart <CheckCircleOutlineIcon />
-            </>
+            <CheckCircleOutlineIcon />
           ) : (
-            <>
-              Add to cart
-              <ShoppingCartOutlinedIcon />
-            </>
+            <ShoppingCartOutlinedIcon />
           )}
         </Styled.Button>
       </Styled.Info>

@@ -15,10 +15,16 @@ export const ProductsCartSlice = createSlice({
     },
 
     addProductsCart: (state, action: PayloadAction<number>) => {
-      state.productsCart = [
-        ...state.productsCart,
-        { id: action.payload, count: 1 },
-      ];
+      const existingProductIndex = state.productsCart.findIndex(
+        (product) => product.id === action.payload
+      );
+
+      if (existingProductIndex !== -1) {
+        state.productsCart[existingProductIndex].count += 1;
+      } else {
+        state.productsCart.push({ id: action.payload, count: 1 });
+      }
+
       enqueueSnackbar("Product added!", { variant: "success" });
       localStorage.setItem("productsCart", JSON.stringify(state.productsCart));
     },
